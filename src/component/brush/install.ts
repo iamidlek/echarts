@@ -45,17 +45,11 @@ export function install(registers: EChartsExtensionInstallRegisters) {
 
     registers.registerVisual(registers.PRIORITY.VISUAL.BRUSH, brushVisual);
 
-    registers.registerAction(
-        {type: 'brush', event: 'brush', update: 'updateVisual' },
-        function (payload: BrushPayload, ecModel: GlobalModel) {
-            ecModel.eachComponent(
-                {mainType: 'brush', query: payload},
-                function (brushModel: BrushModel) {
-                    brushModel.setAreas(payload.areas);
-                }
-            );
-        }
-    );
+    registers.registerAction({
+        type: 'brush',
+        event: 'brush',
+        update: 'none'
+    }, function () {});
 
     /**
      * payload: {
